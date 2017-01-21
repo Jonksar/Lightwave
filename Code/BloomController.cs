@@ -23,7 +23,7 @@ public class BloomController : MonoBehaviour {
 	{
 		float[] spectrum = this.audio.GetSpectrumData (1024, 1, FFTWindow.BlackmanHarris);// you can use other calculations than blackmanharris.
 
-		spectrumScale = 0.2f + 800f * (spectrum[specStat1] + spectrum[specStat2]);
+		spectrumScale = 0.2f + 400f * (spectrum[specStat1] + spectrum[specStat2]);
 		bloom.intensity = spectrumScale;
 	}
 
