@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 82501771815873192}
   - component: {fileID: 95431101578111288}
   - component: {fileID: 114659870814265020}
+  - component: {fileID: 58940248981457974}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -58,6 +59,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!58 &58940248981457974
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609785519373892}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.372
 --- !u!82 &82501771815873192
 AudioSource:
   m_ObjectHideFlags: 1
@@ -68,7 +83,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300001, guid: ad0d743e0ab330b49a09e8bb5d090b84,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: e6e88facf7fa21d498f5238bf8aeaffb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0c21a004b700f25449a31291f4502cdd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -168,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carryingObject: {fileID: 0}
+  mirrorCarrying: {fileID: 8300000, guid: 0c21a004b700f25449a31291f4502cdd, type: 3}
+  smthCarrying: {fileID: 0}
 --- !u!212 &212798111786787822
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -200,6 +217,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 3ec8ddfad84cd914aafaf12ed0bee37b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.32352942, g: 1, b: 0.6081135, a: 1}
   m_FlipX: 0
   m_FlipY: 0
