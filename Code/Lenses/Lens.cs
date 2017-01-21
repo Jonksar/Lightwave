@@ -35,7 +35,7 @@ public abstract class Lens : CLightInteractive, LightInteractive  {
 	}
 
 
-	public void Interact(Vector2 origin, RaycastHit2D hit, LineRenderer renderer)
+	public List<LineSegment> Interact(Vector2 origin, RaycastHit2D hit, int maxLevels = 100)
 	{
 		Debug.Log ("Hit "+ transform.name);
 
@@ -50,13 +50,14 @@ public abstract class Lens : CLightInteractive, LightInteractive  {
 		Debug.Log ("hit normal"+ hit.normal * -5);
 
 		Debug.DrawLine(hit.point, hit.normal, Color.blue, 200);
-		//DrawLaser(hit.point * (1 + colliderWidth), reflectVec, renderer);
-	}
+        return new List<LineSegment>();
+        //DrawLaser(hit.point * (1 + colliderWidth), reflectVec, renderer);
+    }
 
 
 	abstract protected Vector2 getFocalPoint();
 
-	abstract protected void drawLine (Vector2 origin, RaycastHit2D raycastHit, LineRenderer renderer);
+	abstract protected List<LineSegment> drawLine (Vector2 origin, RaycastHit2D raycastHit, int maxLevels = 100);
 
 	protected float getLaserAngleFromNormal(RaycastHit2D hit){
 		Vector2 normalAtHit = hit.point - hit.normal;

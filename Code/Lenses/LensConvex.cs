@@ -17,7 +17,7 @@ public class LensConvex : Lens {
 		return  transform.position +  transform.up * f;
 	}
 
-	private void doConclave(Vector2 origin,RaycastHit2D raycastHit, LineRenderer renderer){
+	private List<LineSegment> doConclave(Vector2 origin,RaycastHit2D raycastHit, int maxLevels = 100){
 		Vector2 hit = raycastHit.point;
 		//Vector2 normConclave = (hit-focalPoint).normalized;
 		//lineRenderer.numPositions = 2;
@@ -28,10 +28,10 @@ public class LensConvex : Lens {
 
 		Vector2 projectedFocal = hit + norm;
 		//DrawLaserBetween(origin, raycastHit.point, renderer);
-		DrawLaser(raycastHit.point * (1 + colliderWidth), projectedFocal, renderer);
+		return DrawLaser(raycastHit.point * (1 + colliderWidth), projectedFocal, maxLevels);
 	}
 
-	override protected void drawLine(Vector2 origin, RaycastHit2D raycastHit, LineRenderer renderer){
+	override protected List<LineSegment> drawLine(Vector2 origin, RaycastHit2D raycastHit, int maxLevels = 100){
 		/*Vector2 hit = raycastHit.point;
 		lineRenderer.numPositions = 3;
 		lineRenderer.SetPosition(0, hit);
@@ -41,7 +41,7 @@ public class LensConvex : Lens {
 		lineRenderer.SetPosition (2, focalPoint+norm*1000);*/
 		//Vector2 pointOnOtherSide = new Vector2(raycastHit.point *1.02); 
 		//DrawLaserBetween(origin, raycastHit.point, renderer);
-		DrawLaser(raycastHit.point * (1 + colliderWidth), focalPoint, renderer);
+		return DrawLaser(raycastHit.point * (1 + colliderWidth), focalPoint, maxLevels);
 	}
 
 }
