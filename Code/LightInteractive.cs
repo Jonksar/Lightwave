@@ -6,53 +6,41 @@ using UnityEngine;
 
 public class CLightInteractive: MonoBehaviour
 {
-    private LineRenderer lineRenderer;
-
-    public void SetRenderer(LineRenderer renderer)
+    public void DrawLaser(Vector2 origin, Vector2 direction, LineRenderer renderer)
     {
-        lineRenderer = renderer;
-    }
-
-    public LineRenderer GetRenderer()
-    {
-        if (lineRenderer == null)
-        {
-            SetRenderer(gameObject.AddComponent<LineRenderer>());
-        }
-        return lineRenderer;
-    }
-
-    public void DrawLaser(Vector2 origin, Vector2 direction)
-    {
-        LineRenderer renderer = GetRenderer();
-
-        int vertexes = lineRenderer.numPositions;
+        int vertexes = renderer.numPositions;
         renderer.numPositions = vertexes + 1;
-        renderer.SetPosition(vertexes, transform.position);
+        renderer.SetPosition(vertexes, origin);
 
         vertexes += 1;
+        //Debug.Log(vertexes);
         renderer.numPositions = vertexes + 1;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
+        //Debug.Log(gameObject.name);
+        //Debug.DrawRay(origin, direction);
         if (hit)
         {
-            Debug.DrawLine(origin, hit.point);
+            //Debug.DrawLine(origin, hit.point);
+            //Debug.Log(hit.collider.name);
             renderer.SetPosition(vertexes, hit.point);
-            LightInteractive target = hit.collider.GetComponent<LightInteractive>();
-            if (target != null)
+            if (vertexes < 100)
             {
-                target.Interact(transform.position, hit);
+                LightInteractive target = hit.collider.GetComponent<LightInteractive>();
+                if (target != null)
+                {
+                    target.Interact(transform.position, hit, renderer);
+                }
             }
-            Debug.Log(hit.collider.name);
         }
         else
         {
             renderer.SetPosition(vertexes, origin + (direction.normalized * 10000));
-            Debug.Log("lõpmatu");
+            //Debug.Log("lõpmatu");
         }
     }
 }
 
 interface LightInteractive {
-    void Interact(Vector2 origin, RaycastHit2D hit);
+    void Interact(Vector2 origin, RaycastHit2D hit, LineRenderer renderer);
 }

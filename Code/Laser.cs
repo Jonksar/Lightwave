@@ -6,11 +6,11 @@ public class Laser : CLightInteractive
 {
 
     private LineRenderer lineRenderer;
+    private bool firing = false;
 
 	// Use this for initialization
 	void Start () {
         lineRenderer = GetComponent<LineRenderer>();
-        SetRenderer(lineRenderer);
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
 	}
@@ -31,15 +31,20 @@ public class Laser : CLightInteractive
         //lineRenderer.SetPosition(0, transform.position);
         //lineRenderer.SetPosition(1, laserHit.position);
         //lineRenderer.enabled = true;
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && !firing)
         {
-            DrawLaser(transform.position, transform.up);
+            lineRenderer.numPositions = 0;
+            DrawLaser(transform.position, transform.up, lineRenderer);
             lineRenderer.enabled = true;
+            
+            firing = true;
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             lineRenderer.numPositions = 0;
+            //Debug.Log(lineRenderer.numPositions);
             lineRenderer.enabled = false;
+            firing = false;
         }
     }
 

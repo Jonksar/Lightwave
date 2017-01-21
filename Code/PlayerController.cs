@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (isCarrying); 
+		//Debug.Log (isCarrying); 
 		// Player moves towards the mouse
 		Vector3 targetPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		if ((targetPos - transform.position).x > 0) {
