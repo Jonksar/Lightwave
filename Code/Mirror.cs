@@ -24,12 +24,7 @@ public class Mirror : CLightInteractive, LightInteractive
 
     public void Interact(Vector2 origin, RaycastHit2D hit, LineRenderer renderer)
     {
-        //Debug.Log(hit.normal);
-        //Debug.Log(hit.point);
         Vector2 laserDirection = Vector3.Reflect((Vector2) hit.transform.position - origin, hit.normal);
-        //Debug.Log(laserDirection);
-        //Debug.DrawRay(hit.point, laserDirection);
-        //Debug.DrawRay(hit.point + laserDirection.normalized * 5f, laserDirection);
         DrawLaser(hit.point, laserDirection, renderer);
     }
 }

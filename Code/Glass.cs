@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class objectpivot : MonoBehaviour {
+public class Glass : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
