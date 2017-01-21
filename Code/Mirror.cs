@@ -25,6 +25,6 @@ public class Mirror : CLightInteractive, LightInteractive
     public List<LineSegment> Interact(Vector2 origin, RaycastHit2D hit, int maxLevels = 100)
     {
         Vector2 laserDirection = Vector3.Reflect((Vector2) hit.transform.position - origin, hit.normal);
-        return DrawLaser(hit.point, laserDirection, maxLevels - 1);
+		return DrawLaser(hit.point + laserDirection * 0.1f, laserDirection, maxLevels - 1);
     }
 }

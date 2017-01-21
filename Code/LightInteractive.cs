@@ -13,22 +13,28 @@ public class CLightInteractive: MonoBehaviour
         path.Add(segment);
         segment.start = origin;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction);
+
         if (hit)
         {
+
+			if (hit.point == origin) {
+				hit.point += direction.normalized * 0.4f;
+			}
             segment.end = hit.point;
             if (maxLevels > 0)
             {
                 LightInteractive target = hit.collider.GetComponent<LightInteractive>();
                 if (target != null)
                 {
-                    path.AddRange(target.Interact(transform.position, hit, maxLevels - 1));
+					path.AddRange(target.Interact(origin, hit, maxLevels - 1));
                 }
             }
         }
         else
-        {
-            segment.end = hit.point;
+        {	
+			
+			segment.end = 10000f * direction;
         }
 
         return path;
