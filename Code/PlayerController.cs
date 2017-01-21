@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 		transform.position = Vector2.MoveTowards (transform.position, targetPos, curSpeed * Time.deltaTime);
 
 		// Move the object towards you if mouse is down && carryingObject
-		if (Input.GetMouseButton (0) && carryingObject != null) {
+		if (Input.GetMouseButton (0) && carryingObject != null && carryingObject.tag != "World") {
 			newIsCarrying = true;
 			this.curSpeed = carryingMoveSpeed;
 		} else {

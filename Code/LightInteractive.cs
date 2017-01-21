@@ -6,41 +6,46 @@ using UnityEngine;
 
 public class CLightInteractive: MonoBehaviour
 {
-    public void DrawLaser(Vector2 origin, Vector2 direction, LineRenderer renderer)
+    public List<LineSegment> DrawLaser(Vector2 origin, Vector2 direction, int maxLevels = 100)
     {
-        int vertexes = renderer.numPositions;
-        renderer.numPositions = vertexes + 1;
-        renderer.SetPosition(vertexes, origin);
-
-        vertexes += 1;
-        //Debug.Log(vertexes);
-        renderer.numPositions = vertexes + 1;
+        List<LineSegment> path = new List<LineSegment>();
+        LineSegment segment = new LineSegment();
+        path.Add(segment);
+        segment.start = origin;
 
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
-        //Debug.Log(gameObject.name);
-        //Debug.DrawRay(origin, direction);
         if (hit)
         {
-            //Debug.DrawLine(origin, hit.point);
-            //Debug.Log(hit.collider.name);
-            renderer.SetPosition(vertexes, hit.point);
-            if (vertexes < 100)
+            segment.end = hit.point;
+            if (maxLevels > 0)
             {
                 LightInteractive target = hit.collider.GetComponent<LightInteractive>();
                 if (target != null)
                 {
-                    target.Interact(transform.position, hit, renderer);
+                    path.AddRange(target.Interact(transform.position, hit, maxLevels - 1));
                 }
             }
         }
         else
         {
-            renderer.SetPosition(vertexes, origin + (direction.normalized * 10000));
-            //Debug.Log("lõpmatu");
+            segment.end = hit.point;
         }
+
+        return path;
+    }
+}
+
+public class LineSegment
+{
+    public Vector2 start;
+    public Vector2 end;
+
+    public bool CompareTo(LineSegment other)
+    {
+        return start == other.start && end == other.end;
     }
 }
 
 interface LightInteractive {
-    void Interact(Vector2 origin, RaycastHit2D hit, LineRenderer renderer);
+    List<LineSegment> Interact(Vector2 origin, RaycastHit2D hit, int maxLevels);
 }
