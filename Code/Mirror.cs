@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mirror : MonoBehaviour {
+public class Mirror : CLightInteractive
+{
 
 	public Transform LeftPivot;
 	public Transform RightPivot; 
@@ -20,4 +21,10 @@ public class Mirror : MonoBehaviour {
 		transform.position = (LeftPivot.position + RightPivot.position) / 2;
 
 	}
+
+    public void Interact(Vector2 origin, RaycastHit2D hit)
+    {
+        Vector2 laserDirection = Vector3.Reflect(origin, hit.normal);
+        DrawLaser(hit.point, laserDirection);
+    }
 }
