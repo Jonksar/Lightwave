@@ -44,6 +44,14 @@ public class LineSegment
     {
         return start == other.start && end == other.end;
     }
+
+	public void DrawLaserBetween(Vector2 origin, Vector2 destination, LineRenderer renderer)
+	{
+		int vertexes = renderer.numPositions;
+		renderer.numPositions = vertexes + 2;
+		renderer.SetPosition(vertexes, origin);
+		renderer.SetPosition(vertexes+1, destination);
+	}
 }
 
 interface LightInteractive {
