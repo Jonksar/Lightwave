@@ -134,7 +134,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 326a81fdb13df4242a98f6505993a8f5,
+      objectReference: {fileID: 21300000, guid: 7fb9e76c7381aeb4ba783cf8039ca833,
         type: 3}
     - target: {fileID: 212915649972761250, guid: 9b9c47e7524962b40a11c1352a765104,
         type: 2}
@@ -327,9 +327,9 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e6e88facf7fa21d498f5238bf8aeaffb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.102
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -495,6 +495,12 @@ Prefab:
       propertyPath: m_Name
       value: Mirror (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 212267468036530332, guid: 9b9c47e7524962b40a11c1352a765104,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7fb9e76c7381aeb4ba783cf8039ca833,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114868199036456282, guid: 9b9c47e7524962b40a11c1352a765104, type: 2}
     - {fileID: 114563782983712200, guid: 9b9c47e7524962b40a11c1352a765104, type: 2}
@@ -684,6 +690,12 @@ Prefab:
       propertyPath: m_Name
       value: Mirror (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 212267468036530332, guid: 9b9c47e7524962b40a11c1352a765104,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7fb9e76c7381aeb4ba783cf8039ca833,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114868199036456282, guid: 9b9c47e7524962b40a11c1352a765104, type: 2}
     - {fileID: 114563782983712200, guid: 9b9c47e7524962b40a11c1352a765104, type: 2}
@@ -800,7 +812,7 @@ Prefab:
         type: 2}
       propertyPath: mirrorCarrying
       value: 
-      objectReference: {fileID: 8300000, guid: e6e88facf7fa21d498f5238bf8aeaffb, type: 3}
+      objectReference: {fileID: 8300000, guid: 0c21a004b700f25449a31291f4502cdd, type: 3}
     - target: {fileID: 212798111786787822, guid: e7e61db5a01090a4a869b556471ae29b,
         type: 2}
       propertyPath: m_Color.r
@@ -816,6 +828,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.6081135
       objectReference: {fileID: 0}
+    - target: {fileID: 82501771815873192, guid: e7e61db5a01090a4a869b556471ae29b,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c21a004b700f25449a31291f4502cdd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7e61db5a01090a4a869b556471ae29b, type: 2}
   m_IsPrefabParent: 0
@@ -926,7 +943,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 326a81fdb13df4242a98f6505993a8f5,
+      objectReference: {fileID: 21300000, guid: 7fb9e76c7381aeb4ba783cf8039ca833,
         type: 3}
     - target: {fileID: 212915649972761250, guid: 9b9c47e7524962b40a11c1352a765104,
         type: 2}
