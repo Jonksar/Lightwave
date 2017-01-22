@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    void NextLevel()
+    public void NextLevel()
     {
 
 		Debug.Log ("HALLO");
