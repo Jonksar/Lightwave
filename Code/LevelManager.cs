@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
     private int levelIndex = 0;
-    private string[] levels = new string[] { "menu", "asd" };
+	private string[] levels = new string[] { "Lightwave/menu", "Lightwave/level001", "Lightwave/level002", "Lightwave/level003" };
 
     void Awake()
     {
@@ -28,11 +28,15 @@ public class LevelManager : MonoBehaviour {
 
     void NextLevel()
     {
+
+		Debug.Log ("HALLO");
+
         levelIndex++;
         if (levels.Length <= levelIndex)
         {
             levelIndex = 0;
         }
-        SceneManager.LoadScene(levels[levelIndex]);
+		SceneManager.LoadScene(levelIndex);
+
     }
 }
