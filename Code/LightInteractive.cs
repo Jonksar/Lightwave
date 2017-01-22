@@ -17,10 +17,19 @@ public class CLightInteractive: MonoBehaviour
 
         if (hit)
         {
+			float passThroughMagnitude = 1f;
+			bool haveHit2 = false;
 
-			if (hit.point == origin) {
-				hit.point += direction.normalized * 0.4f;
+			while (true) {
+				if (hit.point != origin) {
+					break;
+				} else {
+					RaycastHit2D hit2 = Physics2D.Raycast (origin + direction.normalized * passThroughMagnitude, direction);
+					hit = hit2;
+					passThroughMagnitude += 1f;
+				}
 			}
+
             segment.end = hit.point;
             if (maxLevels > 0)
             {
