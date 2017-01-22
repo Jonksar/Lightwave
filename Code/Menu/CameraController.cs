@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ResizeSpriteToScreen();
-
+        ScrollBackground(1000000);
     }
 	
 	// Update is called once per frame
