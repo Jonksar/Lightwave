@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour {
 	private bool isCarrying;
 	private bool newIsCarrying;
 	private float curSpeed;
-	private float normalMoveSpeed = 4f;
-	private float carryingMoveSpeed = 2f;
+	private float normalMoveSpeed = 10f;
+	private float carryingMoveSpeed = 8f;
 	private SpriteRenderer renderer;
 	private AudioSource SFX;
 
