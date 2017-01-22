@@ -19,7 +19,7 @@ public class LensConcave : Lens {
 
 	override protected List<LineSegment> drawLine(Vector2 hitPoint, Vector2 focalPoint, int maxLevels = 100){
 		Vector2 dir = hitPoint - focalPoint; // direction from focal point to hit
-		Debug.DrawRay(hitPoint, dir, Color.yellow, 2000);
+		//Debug.DrawRay(hitPoint, dir, Color.yellow, 2);
 
 		return DrawLaser(hitPoint, dir, maxLevels);
 	}
