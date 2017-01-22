@@ -19,7 +19,7 @@ public class LensConvex : Lens {
 
 	override protected List<LineSegment> drawLine(Vector2 hitPoint, Vector2 focalPoint, int maxLevels = 100){
 		Vector2 dirToFocal = (focalPoint - hitPoint).normalized; // direction from focal point to hit
-		Debug.DrawRay(hitPoint, dirToFocal, Color.yellow, 2000);
+		//Debug.DrawRay(hitPoint, dirToFocal, Color.yellow, 2);
 		return DrawLaser(hitPoint, dirToFocal, maxLevels);
 	}
 

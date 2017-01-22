@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -25,9 +26,14 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log (isCarrying); 
-		// Player moves towards the mouse
-		Vector3 targetPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
+
+        //Debug.Log (isCarrying); 
+        // Player moves towards the mouse
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		if ((targetPos - transform.position).x > 0) {
 			this.renderer.flipX = false;
 		} else {
