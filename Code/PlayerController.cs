@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	
+
 	public GameObject carryingObject;
 	public AudioClip mirrorCarrying;
 	public AudioClip smthCarrying;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 		renderer = gameObject.GetComponent<SpriteRenderer> ();
 		SFX = gameObject.GetComponent<AudioSource> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log (isCarrying); 
@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (!Input.GetMouseButton (0) || carryingObject != null) {
+		if ((!Input.GetMouseButton (0) || carryingObject != null) && other.gameObject.tag != "World" && other.gameObject.tag != "Ignore") {
+			Debug.Log (other.gameObject.tag);
 			carryingObject = other.gameObject;
 		}
 	}

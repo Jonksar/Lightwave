@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Glass : MonoBehaviour {
+public class Glass :  CLightInteractive, LightInteractive {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public List<LineSegment> Interact(Vector2 origin, RaycastHit2D hit, int count)
+	{
+		Vector2 laserDirection = (Vector2) hit.point - origin;
+		Debug.Log (laserDirection);
+		return DrawLaser(hit.point, laserDirection.normalized, count - 1);
 	}
 }

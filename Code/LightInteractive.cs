@@ -11,9 +11,15 @@ public class CLightInteractive: MonoBehaviour
         List<LineSegment> path = new List<LineSegment>();
         LineSegment segment = new LineSegment();
         path.Add(segment);
+        
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction);
+        while (hit && hit.point == origin)
+        {
+            origin += direction.normalized * 0.4f;
+        }
         segment.start = origin;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
         if (hit)
         {
             segment.end = hit.point;
@@ -22,13 +28,14 @@ public class CLightInteractive: MonoBehaviour
                 LightInteractive target = hit.collider.GetComponent<LightInteractive>();
                 if (target != null)
                 {
-                    path.AddRange(target.Interact(transform.position, hit, maxLevels - 1));
+					path.AddRange(target.Interact(origin, hit, maxLevels - 1));
                 }
             }
         }
         else
-        {
-            segment.end = hit.point;
+        {	
+			
+			segment.end = 10000f * direction;
         }
 
         return path;
