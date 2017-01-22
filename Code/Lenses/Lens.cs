@@ -45,7 +45,7 @@ public abstract class Lens : CLightInteractive, LightInteractive  {
 		Debug.DrawRay(origin, originThroughMid, Color.red, 2000);
 		Debug.DrawLine(hit.point, focalPoint, Color.green, 2000);
 
-		return drawLine(hit.point * (1 + colliderWidth), focalPoint, maxLevels);
+		return drawLine(hit.point, focalPoint, maxLevels);
     }
 
 

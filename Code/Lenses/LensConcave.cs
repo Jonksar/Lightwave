@@ -21,7 +21,7 @@ public class LensConcave : Lens {
 		Vector2 dir = hitPoint - focalPoint; // direction from focal point to hit
 		Debug.DrawRay(hitPoint, dir, Color.yellow, 2000);
 
-		return DrawLaser(hitPoint * (1 + colliderWidth), dir, maxLevels);
+		return DrawLaser(hitPoint, dir, maxLevels);
 	}
 
 }
