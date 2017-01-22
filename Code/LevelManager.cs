@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
     private int levelIndex = 0;
-    private string[] levels = ["menu", "asd"];
+    private string[] levels = new string[] { "menu", "asd" };
 
     void Awake()
     {
@@ -20,10 +20,13 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.GetKey(KeyCode.N))
+        {
+            NextLevel();
+        }
+    }
 
-    void nextLevel()
+    void NextLevel()
     {
         levelIndex++;
         if (levels.Length <= levelIndex)
