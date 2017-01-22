@@ -12,19 +12,16 @@ public class LensConcave : Lens {
 	}
 
 
-	override protected Vector2 getFocalPoint() {		
+	override protected float getFocalDist() {
 		float f = 1 / power * -1;
-		return  transform.position +  transform.up * f;
+		return  f;
 	}
 
-	override protected List<LineSegment> drawLine(Vector2 origin,RaycastHit2D raycastHit, int maxLevels = 100){
-		// for concave lens the focal point is on the wrong side, so we need to draw in the opposite dir
-		Vector2 hit = raycastHit.point;
-		Vector2 norm = (hit-focalPoint).normalized; // direction from focal point to hit
-		Vector2 projection = hit + norm; // project in opposite dir
+	override protected List<LineSegment> drawLine(Vector2 hitPoint, Vector2 focalPoint, int maxLevels = 100){
+		Vector2 dir = hitPoint - focalPoint; // direction from focal point to hit
+		Debug.DrawRay(hitPoint, dir, Color.yellow, 2000);
 
-		//DrawLaserBetween(origin, raycastHit.point, renderer);
-		return DrawLaser(raycastHit.point * (1 + colliderWidth), projection, maxLevels);
+		return DrawLaser(hitPoint * (1 + colliderWidth), dir, maxLevels);
 	}
 
 }
