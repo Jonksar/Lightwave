@@ -16,7 +16,9 @@ public class LevelTarget :  MonoBehaviour, LightInteractive {
 	// Update is called once per frame
 	void Update () {
 		if (reachedEnd) {
-		}
+            GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+            manager.GetComponent<LevelManager>().NextLevel();
+        }
 	}
 
 	public void ResetProgress() {

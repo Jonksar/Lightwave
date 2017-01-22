@@ -24,7 +24,9 @@ public class CameraController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            if (playButton.Contains(pos))
+            Debug.Log(pos);
+            Debug.Log(pos / transform.localScale.y);
+            if (playButton.Contains(pos / transform.localScale.y))
             {
                 SceneManager.LoadScene("asd");
             }
