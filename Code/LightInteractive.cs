@@ -14,9 +14,11 @@ public class CLightInteractive: MonoBehaviour
         
 
         RaycastHit2D hit = Physics2D.Raycast(origin, direction);
+        float passThroughMagnitude = 1f;
         while (hit && hit.point == origin)
         {
-            origin += direction.normalized * 0.4f;
+            origin += direction.normalized * passThroughMagnitude;
+            hit = Physics2D.Raycast(origin, direction);
         }
         segment.start = origin;
 
