@@ -11,16 +11,17 @@ public class CLightInteractive: MonoBehaviour
         List<LineSegment> path = new List<LineSegment>();
         LineSegment segment = new LineSegment();
         path.Add(segment);
-        segment.start = origin;
+        
 
         RaycastHit2D hit = Physics2D.Raycast(origin, direction);
+        while (hit && hit.point == origin)
+        {
+            origin += direction.normalized * 0.4f;
+        }
+        segment.start = origin;
 
         if (hit)
         {
-
-			if (hit.point == origin) {
-				hit.point += direction.normalized * 0.4f;
-			}
             segment.end = hit.point;
             if (maxLevels > 0)
             {
