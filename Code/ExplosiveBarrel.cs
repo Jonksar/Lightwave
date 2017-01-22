@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExplosiveBarrel : MonoBehaviour, LightInteractive {
 
+	public GameObject explosion;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,8 +19,17 @@ public class ExplosiveBarrel : MonoBehaviour, LightInteractive {
 	{		
 		Debug.Log ("End");
 
-
+		this.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		doExplosion (this.transform.position);
 		Destroy (this.gameObject);
 		return new List<LineSegment> ();
+	}
+
+	private void doExplosion(Vector3 location, string animation = "explosionanimation")
+	{
+		GameObject expl = Instantiate(explosion);
+		expl.transform.position = location;
+		expl.GetComponent<Animator>().Play(animation);
+		Destroy(expl, expl.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 	}
 }
